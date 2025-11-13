@@ -1,0 +1,470 @@
+/* Reset dan Setup Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    /* Make the app full viewport height and use flex so sidebar + content sit side-by-side */
+    display: flex;
+    min-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    align-items: stretch;
+}
+
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Chat Container */
+/* Layout: sidebar + main */
+#chat-container {
+    /* main chat panel: take remaining space beside sidebar */
+    flex: 1 1 auto;
+    height: 100%;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.5s ease-out;
+}
+
+.app-wrapper {
+    /* take full available width/height and layout columns */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* sidebar */
+#sidebar {
+    width: 300px;
+    height: 100%;
+    background: rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    overflow: auto;
+    flex: 0 0 300px;
+}
+
+.sidebar-header {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.new-chat {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.conversations {
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.conversation-item {
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.conversation-item.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+#chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #000000;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bot-avatar {
+    width: 70px; /* Lebar avatar */
+    height: 70px; /* Tinggi avatar */
+    border-radius: 60%; /* Membuatnya bulat */
+    background-color: #00000000; /* Warna latar jika logo transparan atau belum dimuat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px; /* Jarak antara avatar dan teks */
+    overflow: hidden; /* Pastikan gambar tidak keluar dari lingkaran */
+}
+
+.bot-avatar .avatar-img {
+    width: 120%; /* Gambar mengisi lebar avatar */
+    height: 120%; /* Gambar mengisi tinggi avatar */
+    object-fit: contain; /* Memastikan gambar tidak terpotong dan tetap proporsional */
+    /* Anda bisa mencoba 'cover' jika ingin gambar memenuhi seluruh area avatar dan boleh terpotong sedikit */
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.header-info h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.header-info .status {
+    font-size: 12px;
+    opacity: 0.9;
+    margin: 5px 0 0 0;
+}
+
+/* Tool Selection */
+#tool-selection {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 20px;
+    background: linear-gradient(to bottom, #f8f9fa, #f0f0f0);
+    border-bottom: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+}
+
+.tool-btn {
+    background: white;
+    color: #333;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.tool-btn i {
+    font-size: 16px;
+}
+
+.tool-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.tool-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.tool-btn.active:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Chat Window */
+#chat-window {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #f8f9fa;
+}
+
+#chat-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-window::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#chat-window::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+#chat-window::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Messages */
+.message {
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 85%;
+    word-wrap: break-word;
+    animation: messageSlide 0.3s ease-out;
+}
+
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.user {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.message.bot {
+    background: white;
+    color: #333;
+    align-self: flex-start;
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 4px;
+}
+
+.message.bot.welcome {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    border: 1px solid #667eea40;
+}
+
+.message.bot.welcome .message-content p {
+    margin: 8px 0 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.message.loading {
+    background: white;
+    color: #667eea;
+    font-weight: 500;
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Loading Animation */
+@keyframes blink {
+    0%, 49%, 100% {
+        opacity: 0.3;
+    }
+    50%, 99% {
+        opacity: 1;
+    }
+}
+
+.loading-dot {
+    animation: blink 1.4s infinite;
+}
+
+.loading-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Input Area */
+#input-area {
+    padding: 15px 20px;
+    background: white;
+    border-top: 2px solid #e0e0e0;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#chat-input {
+    flex: 1;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+#chat-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#chat-input::placeholder {
+    color: #999;
+}
+
+#send-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+#send-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+}
+
+#send-btn:active {
+    transform: scale(0.95);
+}
+
+#send-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+    .app-wrapper { max-width: 95%; }
+}
+
+@media (max-width: 800px) {
+    .app-wrapper { flex-direction: column; align-items:center; }
+    #sidebar { width: 100%; max-height: 200px; order: 2; }
+    #chat-container { width: 100%; order: 1; }
+
+    .message { max-width: 90%; }
+    .tool-btn span { display: none; }
+    .tool-btn { padding: 10px 15px; }
+}
+
+/* Markdown / rich text styling inside bot messages */
+.message-content h1, .message-content h2, .message-content h3 {
+    margin: 6px 0;
+}
+.message-content p {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+.message-content ul, .message-content ol {
+    margin: 6px 0 6px 18px;
+}
+.message-content code {
+    background: #f5f5f7;
+    padding: 4px 6px;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    font-size: 13px;
+}
+.message-content pre code {
+    display: block;
+    padding: 12px;
+    overflow-x: auto;
+}
+
+/* Collapsible long messages */
+.collapsed-content {
+    max-height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+.collapsed-fade {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 48px;
+    background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+.show-more-btn {
+    display: inline-block;
+    margin-top: 8px;
+    background: transparent;
+    border: 0;
+    color: #667eea;
+    font-weight: 600;
+    cursor: pointer;
+}
+.show-more-btn:focus { outline: none; }
+
+.message-content img, .message-content video {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+#vanta-bg {
+  position: fixed;   /* Tetap di tempat saat di-scroll */
+  top: 0;
+  left: 0;
+  width: 100vw;      /* Lebar penuh layar */
+  height: 100vh;     /* Tinggi penuh layar */
+  z-index: -1;       /* PENTING: Kirim ke paling belakang */
+}

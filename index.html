@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPL AI - Chatbot Cerdas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- <div class="background-gradient"></div> -->
+    <div id="vanta-bg"></div> <div id="chat-container"></div>
+
+    <div class="app-wrapper">
+        <!-- Sidebar: conversation history -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <button id="new-chat-btn" class="new-chat">+ Percakapan Baru</button>
+            </div>
+            <div id="conversations" class="conversations">
+                <!-- conversations will be rendered here -->
+            </div>
+        </aside>
+
+        <!-- Main chat area -->
+        <div id="chat-container">
+        <!-- Header -->
+        <div id="chat-header">
+            <div class="header-content">
+                <div class="bot-avatar">
+                    <img src="logo.png" alt="NPL Ai Logo" class="avatar-img">
+                </div>
+                <div class="header-info">
+                    <h1>NPL Ai</h1>
+                    <p class="status">Siap membantu Anda</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tool Selection -->
+        <div id="tool-selection">
+            <button id="btn-chat" class="tool-btn active" title="Mode Chat">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </button>
+            <button id="btn-image" class="tool-btn" title="Generate Gambar">
+                <i class="fas fa-image"></i>
+                <span>Gambar</span>
+            </button>
+            <button id="btn-video" class="tool-btn" title="Generate Video">
+                <i class="fas fa-video"></i>
+                <span>Video</span>
+            </button>
+        </div>
+
+        <!-- Chat Window -->
+        <div id="chat-window">
+            <div class="message bot welcome">
+                <div class="message-content">
+                    <strong>Halo! 👋</strong>
+                    <p>Saya NPL AI, asisten digital Anda yang siap membantu. Tanyakan apa saja atau minta saya membuat gambar dan video untuk Anda!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div id="input-area">
+            <div class="input-wrapper">
+                <input type="text" id="chat-input" placeholder="Ketik pesan Anda...">
+                <button id="send-btn" title="Kirim pesan">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Markdown renderer + sanitizer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+    <script src="script.js"></script>
+
+    <script src="script.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+    <script>
+    VANTA.NET({
+      el: "#vanta-bg",         // <-- Arahkan ke ID 'div' yang kita buat
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      // Ini adalah warna dari 'Customizer' di screenshot Anda
+      color: 0x3fffe6,
+      backgroundColor: 0x23153c,
+      points: 7.00,
+      maxDistance: 25.00,
+      spacing: 15.00
+    })
+    </script>
+</body>
+</html>
